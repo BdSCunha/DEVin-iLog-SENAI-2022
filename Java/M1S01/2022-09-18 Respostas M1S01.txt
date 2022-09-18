@@ -1,0 +1,134 @@
+[M1S01] Ex 1 - Git
+Explique com suas palavras o que seria o limite W.I.P. no Kanban.
+
+WIP é a sigla em inglês para Work in Progress, ou Trabalho em andamento.
+Representa o número de tarefas sendo trabalhadas ao mesmo tempo pela equipe ou por um indivíduo da equipe. O WIP ajuda a evitar sobrecarga e a melhorar os fluxos de trabalho
+
+
+[M1S01] Ex 2 - Git
+Informe qual comando git gera um 'pacote' de alterações feitas no repositório, contendo arquivos alterados, autor e uma mensagem de resumo.
+
+$ git commit
+
+
+[M1S01] Ex 2 - Git
+Informe qual comando git usamos para verificar a situação atual do repositório e da staging area.
+
+$ git status
+
+
+[M1S01] Ex 2 - Git
+Informe qual comando git usamos para listar os branchs disponíveis/existentes.
+
+$ git branch - lista todas as branches locais
+$ gir branch - lista todas as branches locais e remotas
+
+
+[M1S01] Ex 5 - Java
+Implemente uma classe Java cujo método main imprima no console a frase:
+"Olá Dev!"
+
+public class OlaDev {
+    public static void main(String[] args) {
+        System.out.print("Olá, Dev!");
+    }
+}
+
+
+[M1S01] Ex 6 - Operadores
+Informe o resultado que será impresso após a avaliação da expressão aritmética abaixo:
+int exp = 10 + 20 + 3 * 6 - 15;
+System.out.println(exp);
+
+Resultado: 33
+
+
+[M1S01] Ex 7 - Operadores
+Implemente em Java um código para calcular e imprimir no console a área de um triângulo de base 12 cm, e altura de 8 cm,
+sabendo que a fórmula da área do triângulo é:
+	A = ( base * altura ) / 2
+Dicas:
+- Declare as variáveis 'base' e 'altura' e atribua os respectivos valores;
+- Declare e atribua na variável 'area' o valor da expressão aritmética da fórmula indicada;
+- Imprima o resultado no console.
+
+public class CalcAreaTriangulo {
+    public static void main(String[] args) {
+        float base = .12F, altura = .08F;
+
+        float area = (base*altura)/2;
+
+        System.out.printf("Um triângulo com base de %.2fcm e altura %.2fcm, tem uma área de %.4fcm².", base, altura, area);
+    }
+}
+
+
+[M1S01] Ex 8 - Operadores
+O sistema de pontuação por partida no Campeonato Brasileiro de Futebol funciona assim:
+	Vitória = 3 pontos
+	Derrota = 0 pontos
+	Empate  = 1 ponto
+Dado que o time 'Tabajara F.C.' tem 12 vitórias, 2 derrotas e 6 empates, implemente um código em Java para calcular a quantidade de pontos e de jogos deste time e imprimir no console a frase abaixo (preenchendo-a com os respectivos valores):
+"O time <NOME_DO_TIME> acumulou <NRO_DE_PTOS> após jogar <NRO_PARTIDAS> partidas".
+Dicas:
+- Crie variáveis para guardar o valor de vitórias, derrotas e empates.
+- Crie outra variável para guardar o número de partidas (soma de vitórias, derrotas e empates).
+- Crie outra variável para receber o resultado do cálculo de pontos.
+
+public class TabajaraFC {
+    public static void main(String[] args) {
+            String time = "Tabajara F.C.";
+            int vitorias = 12, derrotas = 2, empates = 6;
+            int partidas = vitorias + derrotas + empates;
+            int pontos = vitorias*3 + empates;
+
+            System.out.printf("O time %s acumulou %d após jogar %d partidas", time, pontos, partidas);
+        }
+}
+
+
+
+[M1S01] Ex 9 - Java CLI e Console
+Escreva um programa em Java que pergunte ao usuário via linha de comando qual seu herói favorito.
+Atribua a resposta em uma variável.
+Imprima no console a frase: "Seu herói favorito é <nome do herói informado>".
+
+import java.util.Scanner;
+
+public class Heroi {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite o nome de seu heroi favorito: ");
+        String heroi = scanner.nextLine();
+        scanner.close();
+
+        System.out.printf("Seu heroi favorito e %s", heroi);
+    }
+}
+
+
+[M1S01] Ex 10 - Java CLI e Console
+Escreva um programa em Java que pergunte ao usuário via linha de comando qual o ano de seu nascimento.
+Com base no ano informado, imprima no console a idade calculada deste usuário.
+Dicas:
+- Atribua o ano informado a uma variável.
+- Crie uma instância da data atual (LocalDate), e extraia o ano da data atual (pesquise sobre o método getYear() da classe LocalDate).
+- Faça a conta da idade subtraindo o ano informado do ano atual.
+
+import java.util.Scanner;
+import java.time.LocalDate;
+
+public class CalcIdade {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite o ano do seu nascimento: ");
+        int anoDeNascimento = scanner.nextInt();
+        scanner.close();
+
+        int anoAtual = LocalDate.now().getYear();
+
+        int idade = anoAtual - anoDeNascimento;
+
+        System.out.printf("Você tem %d anos.", idade);
+    }
+}
