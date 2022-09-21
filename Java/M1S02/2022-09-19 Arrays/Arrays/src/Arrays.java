@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Arrays {
     public static void main(String[] args) {
         String[] cores = {"vermelho", "preto", "branco", "roxo", "azul", "amarelo"};
@@ -16,5 +18,9 @@ public class Arrays {
         System.out.println(multicores[1][0]);
         System.out.println(multicores.length);
         System.out.println(multicores[0].length);
+    }
+
+    public static List<Integer> asList(long l, long m, long n, long o) {
+        return null;
     }
 }
