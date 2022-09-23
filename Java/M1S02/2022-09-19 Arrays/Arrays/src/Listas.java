@@ -25,10 +25,10 @@ public class Listas {
 
         /* **************************************************************************************************** */
 
-        List<Long> numeros = Arrays.asList(10L, 34L, 56L, 78L);
-        List<Long> copia = new ArrayList<>(numeros);
+        // List<Long> numeros = Arrays.asList(10L, 34L, 56L, 78L);
+        // List<Long> copia = new ArrayList<>(numeros);
 
-        System.out.println("numeros: " + numeros);
-        System.out.println("copia: " + copia);
+        // System.out.println("numeros: " + numeros);
+        // System.out.println("copia: " + copia);
     }
 }
