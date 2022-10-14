@@ -33,7 +33,7 @@ public class Display {
                 } else if(opcao == 4) {
                     // O sistema não deve ser encerrado até que o usuário selecione a opção 4, devendo ser exibido novamente o menu de opções após finalizar cada operação selecionada.
                     System.out.println("\nEncerrando aplicacao.\n");
-                    scanner.close();
+                    // scanner.close();
                     return;
                 } else {
                     throw new OpcaoInvalidaException();
