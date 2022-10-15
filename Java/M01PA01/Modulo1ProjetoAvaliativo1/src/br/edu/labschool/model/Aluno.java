@@ -2,8 +2,9 @@ package br.edu.labschool.model;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Scanner;
+import java.util.*;
 
+import br.edu.labschool.Main;
 import br.edu.labschool.exception.OpcaoInvalidaException;
 import br.edu.labschool.repository.PessoaRepository;
 
@@ -28,11 +29,7 @@ public class Aluno extends Pessoa {
 
     public static void CadastrarAluno(Scanner scanner) {
         System.out.println();
-        System.out.println("Lab School > 1 - Cadastrar Aluno");
-        System.out.println("┌─┐┌─┐┌┬┐┌─┐┌─┐┌┬┐┬─┐┌─┐┬─┐  ┌─┐┬  ┬ ┬┌┐┌┌─┐");
-        System.out.println("│  ├─┤ ││├─┤└─┐ │ ├┬┘├─┤├┬┘  ├─┤│  │ │││││ │");
-        System.out.println("└─┘┴ ┴─┴┘┴ ┴└─┘ ┴ ┴└─┴ ┴┴└─  ┴ ┴┴─┘└─┘┘└┘└─┘");
-        System.out.println("--------------------------------------------");
+        System.out.println(Main.ANSI_YELLOW + "Lab School > CADASTRAMENTO > 1 - Cadastrar Aluno" + Main.ANSI_RESET);
 
         System.out.print("Digite o Nome do Aluno: ");
         String nome = scanner.nextLine();
@@ -63,11 +60,7 @@ public class Aluno extends Pessoa {
 
     public static void AtualizarStatusMatriculaAluno(Scanner scanner) {
         System.out.println();
-        System.out.println("Lab School > 4 - Atualizar status matricula aluno");
-        System.out.println("┌─┐┌┬┐┬ ┬┌─┐┬  ┬┌─┐┌─┐┬─┐  ┌┬┐┌─┐┌┬┐┬─┐┬┌─┐┬ ┬┬  ┌─┐  ┌─┐┬  ┬ ┬┌┐┌┌─┐");
-        System.out.println("├─┤ │ │ │├─┤│  │┌─┘├─┤├┬┘  │││├─┤ │ ├┬┘││  │ ││  ├─┤  ├─┤│  │ │││││ │");
-        System.out.println("┴ ┴ ┴ └─┘┴ ┴┴─┘┴└─┘┴ ┴┴└─  ┴ ┴┴ ┴ ┴ ┴└─┴└─┘└─┘┴─┘┴ ┴  ┴ ┴┴─┘└─┘┘└┘└─┘");
-        System.out.println("---------------------------------------------------------------------");
+        System.out.println(Main.ANSI_CYAN + "Lab School > SERVICOS > 4 - Atualizar status matricula aluno" + Main.ANSI_RESET);
 
         System.out.print("Digite o CPF do aluno que tera a matricula alterada: ");
         Long cpf = Long.parseLong(scanner.nextLine());
@@ -99,11 +92,7 @@ public class Aluno extends Pessoa {
 
     public static void relatorioAlunos(Scanner scanner) {
         System.out.println();
-        System.out.println("Lab School > 7 - Relatorio de alunos");
-        System.out.println("┬─┐┌─┐┬  ┌─┐┌┬┐┌─┐┬─┐┬┌─┐  ┌─┐┬  ┬ ┬┌┐┌┌─┐┌─┐");
-        System.out.println("├┬┘├┤ │  ├─┤ │ │ │├┬┘││ │  ├─┤│  │ │││││ │└─┐");
-        System.out.println("┴└─└─┘┴─┘┴ ┴ ┴ └─┘┴└─┴└─┘  ┴ ┴┴─┘└─┘┘└┘└─┘└─┘");
-        System.out.println("---------------------------------------------");
+        System.out.println(Main.ANSI_MAGENTA + "Lab School > RELATORIOS > 7 - Relatorio de alunos" + Main.ANSI_RESET);
 
         System.out.println("Digite a opcao do status das matriculas dos alunos que serao listados: ");
         System.out.println("1 - Ativo");
@@ -130,6 +119,25 @@ public class Aluno extends Pessoa {
                 }
             }
         }
+    }
+
+    public static void relatorioAtendimentoPedagogico() {
+        System.out.println();
+        System.out.println(Main.ANSI_MAGENTA + "Lab School > RELATORIOS > 9 - Relatorio de atendimento pedagogico dos Alunos" + Main.ANSI_RESET);
+
+        List<Aluno> alunosList = new ArrayList<>();
+        for(Pessoa pessoa : PessoaRepository.getPessoas()) {
+            if(pessoa instanceof Aluno) {
+                alunosList.add(((Aluno)pessoa));
+            }
+        }
+        Collections.sort(alunosList, new OrdernarAlunosPorAtendimentosSolicitados());
+
+        System.out.println("\nRELATORIO DE ATENDIMENTO PEDAGOGICO DOS ALUNOS (ORDEM CRESCENTE): ");
+        for(Aluno aluno : alunosList) {
+            System.out.println("Id: " + aluno.getId() + ", nome: " + aluno.getNome() + ", atendimentosSolicitados: " + aluno.getAtendimentosSolicitados());
+        }
+        System.out.println();
     }
 
     public StatusMatriculaAluno getStatusMatricula() {
@@ -166,5 +174,12 @@ public class Aluno extends Pessoa {
         ", nota: " + this.getNota() + 
         ", atendimentosSolicitados: " + this.getAtendimentosSolicitados() + 
         "]";
+    }
+}
+
+class OrdernarAlunosPorAtendimentosSolicitados implements Comparator<Aluno> {
+    @Override
+    public int compare(Aluno o1, Aluno o2) {
+        return o2.getAtendimentosSolicitados().compareTo(o1.getAtendimentosSolicitados());
     }
 }

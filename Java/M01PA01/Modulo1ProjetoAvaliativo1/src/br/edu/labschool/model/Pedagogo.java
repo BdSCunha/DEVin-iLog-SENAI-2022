@@ -2,8 +2,13 @@ package br.edu.labschool.model;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Scanner;
 
+import br.edu.labschool.Main;
 import br.edu.labschool.repository.PessoaRepository;
 
 public class Pedagogo extends Pessoa {
@@ -15,11 +20,7 @@ public class Pedagogo extends Pessoa {
 
     public static void CadastrarPedagogo(Scanner scanner) {
         System.out.println();
-        System.out.println("Lab School > 3 - Cadastrar Pedagogo");
-        System.out.println("┌─┐┌─┐┌┬┐┌─┐┌─┐┌┬┐┬─┐┌─┐┬─┐  ┌─┐┌─┐┌┬┐┌─┐┌─┐┌─┐┌─┐┌─┐");
-        System.out.println("│  ├─┤ ││├─┤└─┐ │ ├┬┘├─┤├┬┘  ├─┘├┤  ││├─┤│ ┬│ ││ ┬│ │");
-        System.out.println("└─┘┴ ┴─┴┘┴ ┴└─┘ ┴ ┴└─┴ ┴┴└─  ┴  └─┘─┴┘┴ ┴└─┘└─┘└─┘└─┘");
-        System.out.println("-----------------------------------------------------");
+        System.out.println(Main.ANSI_YELLOW + "Lab School > CADASTRAMENTO > 3 - Cadastrar Pedagogo" + Main.ANSI_RESET);
 
         System.out.print("Digite o Nome do Pedagogo: ");
         String nome = scanner.nextLine();
@@ -45,11 +46,7 @@ public class Pedagogo extends Pessoa {
 
     public static void realizarAtendimentoPedagogico(Scanner scanner) {
         System.out.println();
-        System.out.println("Lab School > 5 - Atendimento Pedagogico");
-        System.out.println("┌─┐┌┬┐┌─┐┌┐┌┌┬┐┬┌┬┐┌─┐┌┐┌┌┬┐┌─┐  ┌─┐┌─┐┌┬┐┌─┐┌─┐┌─┐┌─┐┬┌─┐┌─┐");
-        System.out.println("├─┤ │ ├┤ │││ ││││││├┤ │││ │ │ │  ├─┘├┤  ││├─┤│ ┬│ ││ ┬││  │ │");
-        System.out.println("┴ ┴ ┴ └─┘┘└┘─┴┘┴┴ ┴└─┘┘└┘ ┴ └─┘  ┴  └─┘─┴┘┴ ┴└─┘└─┘└─┘┴└─┘└─┘");
-        System.out.println("-------------------------------------------------------------");
+        System.out.println(Main.ANSI_CYAN + "Lab School > SERVICOS > 5 - Atendimento Pedagogico" + Main.ANSI_RESET);
 
         System.out.println("Digite o CPF do Aluno que recebeu atendimento pedagogico: ");
         Long cpfAluno = Long.parseLong(scanner.nextLine());
@@ -76,6 +73,25 @@ public class Pedagogo extends Pessoa {
         }
     }
 
+    public static void relatorioAtendimentoPedagogico() {
+        System.out.println();
+        System.out.println(Main.ANSI_MAGENTA + "Lab School > RELATORIOS > 10 - Relatorio de atendimento pedagogico dos Pedagogos" + Main.ANSI_RESET);
+
+        List<Pedagogo> pedagogosList = new ArrayList<>();
+        for(Pessoa pessoa : PessoaRepository.getPessoas()) {
+            if(pessoa instanceof Pedagogo) {
+                pedagogosList.add(((Pedagogo)pessoa));
+            }
+        }
+        Collections.sort(pedagogosList, new OrdernarPedagogosPorAtendimentosRealizados());
+
+        System.out.println("\nRELATORIO DE ATENDIMENTO PEDAGOGICO DOS PEDAGOGOS (ORDEM CRESCENTE): ");
+        for(Pedagogo pedagogo : pedagogosList) {
+            System.out.println("Id: " + pedagogo.getId() + ", nome: " + pedagogo.getNome() + ", atendimentosRealizados: " + pedagogo.getAtendimentosRealizados());
+        }
+        System.out.println();
+    }
+
     public Integer getAtendimentosRealizados() {
         return atendimentosRealizados;
     }
@@ -93,5 +109,12 @@ public class Pedagogo extends Pessoa {
         ", cpf: " + this.getCpf() + 
         ", atendimentosRealizados: " + this.getAtendimentosRealizados() + 
         "]";
+    }
+}
+
+class OrdernarPedagogosPorAtendimentosRealizados implements Comparator<Pedagogo> {
+    @Override
+    public int compare(Pedagogo o1, Pedagogo o2) {
+        return o2.getAtendimentosRealizados().compareTo(o1.getAtendimentosRealizados());
     }
 }

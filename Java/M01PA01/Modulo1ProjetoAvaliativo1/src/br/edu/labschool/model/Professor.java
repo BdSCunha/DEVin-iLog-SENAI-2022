@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
+import br.edu.labschool.Main;
 import br.edu.labschool.exception.OpcaoInvalidaException;
 import br.edu.labschool.repository.PessoaRepository;
 
@@ -39,11 +40,7 @@ public class Professor extends Pessoa {
 
     public static void CadastrarProfessor(Scanner scanner) {
         System.out.println();
-        System.out.println("Lab School > 2 - Cadastrar Professor");
-        System.out.println("┌─┐┌─┐┌┬┐┌─┐┌─┐┌┬┐┬─┐┌─┐┬─┐  ┌─┐┬─┐┌─┐┌─┐┌─┐┌─┐┌─┐┌─┐┬─┐");
-        System.out.println("│  ├─┤ ││├─┤└─┐ │ ├┬┘├─┤├┬┘  ├─┘├┬┘│ │├┤ ├┤ └─┐└─┐│ │├┬┘");
-        System.out.println("└─┘┴ ┴─┴┘┴ ┴└─┘ ┴ ┴└─┴ ┴┴└─  ┴  ┴└─└─┘└  └─┘└─┘└─┘└─┘┴└─");
-        System.out.println("--------------------------------------------------------");
+        System.out.println(Main.ANSI_YELLOW + "Lab School > CADASTRAMENTO > 2 - Cadastrar Professor" + Main.ANSI_RESET);
 
         System.out.print("Digite o Nome do Professor: ");
         String nome = scanner.nextLine();
@@ -101,11 +98,7 @@ public class Professor extends Pessoa {
 
     public static void relatorioProfessores(Scanner scanner) {
         System.out.println();
-        System.out.println("Lab School > 8 - Relatorio de professores");
-        System.out.println("┬─┐┌─┐┬  ┌─┐┌┬┐┌─┐┬─┐┬┌─┐  ┌─┐┬─┐┌─┐┌─┐┌─┐┌─┐┌─┐┌─┐┬─┐┌─┐┌─┐");
-        System.out.println("├┬┘├┤ │  ├─┤ │ │ │├┬┘││ │  ├─┘├┬┘│ │├┤ ├┤ └─┐└─┐│ │├┬┘├┤ └─┐");
-        System.out.println("┴└─└─┘┴─┘┴ ┴ ┴ └─┘┴└─┴└─┘  ┴  ┴└─└─┘└  └─┘└─┘└─┘└─┘┴└─└─┘└─┘");
-        System.out.println("------------------------------------------------------------");
+        System.out.println(Main.ANSI_MAGENTA + "Lab School > RELATORIOS > 8 - Relatorio de professores" + Main.ANSI_RESET);
 
         System.out.println("Digite a opcao de experiencia dos professores que serao listados: ");
         System.out.println("1 - Front-End");

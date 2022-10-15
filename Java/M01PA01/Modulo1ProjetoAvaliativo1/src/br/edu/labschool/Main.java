@@ -11,9 +11,19 @@ import br.edu.labschool.model.Pedagogo;
 
 public class Main {
     public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_RED_BACKGROUND = "\u001B[41m";
+
+    public static final String BOLD = "\033[1;37m";
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_GREEN = "\u001B[32m";
-    public static final String ANSI_RED_BACKGROUND = "\u001B[41m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_CYAN = "\u001B[36m";
+    public static final String ANSI_MAGENTA = "\u001B[35m";
+
+    public static final String GREEN_BOLD = "\033[1;32m";
+    public static final String YELLOW_BOLD = "\033[1;33m";
+    public static final String CYAN_BOLD = "\033[1;36m";
+    public static final String MAGENTA_BOLD = "\033[1;35m";
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -34,10 +44,10 @@ public class Main {
                 else if(opcao == 6) PessoaRepository.listarPessoas(scanner);
                 else if(opcao == 7) Aluno.relatorioAlunos(scanner);
                 else if(opcao == 8) Professor.relatorioProfessores(scanner);
-                // "9 - Relatorio de atendimento pedagogico dos Alunos");
-                // "10 - Relatorio de atendimento pedagogico dos Pedagogos");
+                else if(opcao == 9) Aluno.relatorioAtendimentoPedagogico();
+                else if(opcao == 10) Pedagogo.relatorioAtendimentoPedagogico();
                 else if(opcao == 11) {
-                    System.out.println("Encerrando aplicacao...\n");
+                    System.out.println(ANSI_RED + "Encerrando aplicacao...\n" + ANSI_RESET);
                     return;
                 }
                 else throw new OpcaoInvalidaException();
@@ -52,24 +62,34 @@ public class Main {
     }
 
     public static void menu() {
-        System.out.println(ANSI_GREEN);
-        System.out.println("╠══════════════════════════════════════════════════════╣");
-        System.out.println("║  ╔═╗╦╔═╗╔╦╗╔═╗╔╦╗╔═╗  ╦  ╔═╗╔╗   ╔═╗╔═╗╦ ╦╔═╗╔═╗╦    ║");
-        System.out.println("║  ╚═╗║╚═╗ ║ ║╣ ║║║╠═╣  ║  ╠═╣╠╩╗  ╚═╗║  ╠═╣║ ║║ ║║    ║");
-        System.out.println("║  ╚═╝╩╚═╝ ╩ ╚═╝╩ ╩╩ ╩  ╩═╝╩ ╩╚═╝  ╚═╝╚═╝╩ ╩╚═╝╚═╝╩═╝  ║");
-        System.out.println("╠══════════════════════════════════════════════════════╣");
-        System.out.print(ANSI_RESET);
-        System.out.println("1 - Cadastrar Aluno");
-        System.out.println("2 - Cadastrar Professor");
-        System.out.println("3 - Cadastrar Pedagogo");
-        System.out.println("4 - Atualizar status matricula aluno");
-        System.out.println("5 - Realizar atendimento pedagógico");
-        System.out.println("6 - Listar Pessoas (Alunos, Professores e/ou Pedagogos)");
-        System.out.println("7 - Relatorio de Alunos");
-        System.out.println("8 - Relatorio de Professores");
-        System.out.println("9 - Relatorio de atendimento pedagogico dos Alunos");
-        System.out.println("10 - Relatorio de atendimento pedagogico dos Pedagogos");
-        System.out.println("11 - Sair / Encerrar aplicacao");
+        System.out.println();
+        System.out.println("╠══════════════════════════════════════════════════════════╣");
+        System.out.println("║                                                          ║");
+        System.out.println("║    ╔═╗╦╔═╗╔╦╗╔═╗╔╦╗╔═╗  ╦  ╔═╗╔╗   ╔═╗╔═╗╦ ╦╔═╗╔═╗╦      ║");
+        System.out.println("║    ╚═╗║╚═╗ ║ ║╣ ║║║╠═╣  ║  ╠═╣╠╩╗  ╚═╗║  ╠═╣║ ║║ ║║      ║");
+        System.out.println("║    ╚═╝╩╚═╝ ╩ ╚═╝╩ ╩╩ ╩  ╩═╝╩ ╩╚═╝  ╚═╝╚═╝╩ ╩╚═╝╚═╝╩═╝    ║");
+        System.out.println("║                                                          ║");
+        System.out.println("╠══════════════════════ " + YELLOW_BOLD + "CADASTRAMENTO" + ANSI_RESET + " ═════════════════════╣");
+        System.out.println("╠═ " + ANSI_YELLOW + "1" + ANSI_RESET + " - Cadastrar Aluno                                    ═╣");
+        System.out.println("╠═ " + ANSI_YELLOW + "2" + ANSI_RESET + " - Cadastrar Professor                                ═╣");
+        System.out.println("╠═ " + ANSI_YELLOW + "3" + ANSI_RESET + " - Cadastrar Pedagogo                                 ═╣");
+        System.out.println("║                                                          ║");
+        System.out.println("╠════════════════════════ " + CYAN_BOLD + "SERVICOS" + ANSI_RESET + " ════════════════════════╣");
+        System.out.println("╠═ " + ANSI_CYAN + "4" + ANSI_RESET + " - Atualizar status matricula aluno                   ═╣");
+        System.out.println("╠═ " + ANSI_CYAN + "5" + ANSI_RESET + " - Realizar atendimento pedagógico                    ═╣");
+        System.out.println("╠═ " + ANSI_CYAN + "6" + ANSI_RESET + " - Listar Pessoas (Alunos, Professores e/ou Pedagogos)═╣");
+        System.out.println("║                                                          ║");
+        System.out.println("╠═══════════════════════ " + MAGENTA_BOLD + "RELATORIOS" + ANSI_RESET + " ═══════════════════════╣");
+        System.out.println("╠═ " + ANSI_MAGENTA + "7" + ANSI_RESET + " - Relatorio de Alunos                                ═╣");
+        System.out.println("╠═ " + ANSI_MAGENTA + "8" + ANSI_RESET + " - Relatorio de Professores                           ═╣");
+        System.out.println("╠═ " + ANSI_MAGENTA + "9" + ANSI_RESET + " - Relatorio de atendimento pedagogico dos Alunos     ═╣");
+        System.out.println("╠═ " + ANSI_MAGENTA + "10" + ANSI_RESET + " - Relatorio de atendimento pedagogico dos Pedagogos ═╣");
+        System.out.println("║                                                          ║");
+        System.out.println("╠═ " + ANSI_RED + "11" + ANSI_RESET + " - Sair / Encerrar aplicacao                         ═╣");
+        System.out.println("║                                                          ║");
+        System.out.println("╠══════════════════════════════════════════════════════════╣");
+        System.out.println();
+        System.out.print("Selecione o numero de uma das opcoes acima para continuar: ");
     }
 
     public static void popularLista() {
