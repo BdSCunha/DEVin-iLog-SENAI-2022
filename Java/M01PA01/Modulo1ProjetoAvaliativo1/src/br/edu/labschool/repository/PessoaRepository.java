@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import br.edu.labschool.Main;
 import br.edu.labschool.exception.OpcaoInvalidaException;
 import br.edu.labschool.model.Aluno;
 import br.edu.labschool.model.Pedagogo;
@@ -17,14 +18,10 @@ public class PessoaRepository {
         pessoas.add(pessoa);
     }
 
-    public static void listarPessoas(Scanner scanner) {
-        if(PessoaRepository.getPessoas().isEmpty()) System.out.println("No momento nao ha nenhuma pessoa cadastrada no sistema.");
+    public static void relatorioPessoas(Scanner scanner) {
+        if(PessoaRepository.getPessoas().isEmpty()) System.out.println(Main.ANSI_RED + "No momento nao ha nenhuma pessoa cadastrada no sistema." + Main.ANSI_RESET);
         else {
-            System.out.println("Lab School > 6 - Listar Pessoas");
-            System.out.println("┬  ┬┌─┐┌┬┐┌─┐┬─┐  ┌─┐┌─┐┌─┐┌─┐┌─┐┌─┐┌─┐");
-            System.out.println("│  │└─┐ │ ├─┤├┬┘  ├─┘├┤ └─┐└─┐│ │├─┤└─┐");
-            System.out.println("┴─┘┴└─┘ ┴ ┴ ┴┴└─  ┴  └─┘└─┘└─┘└─┘┴ ┴└─┘");
-            System.out.println("---------------------------------------");
+            System.out.println(Main.ANSI_MAGENTA + "Lab School > SERVICOS > 6 - Listar Pessoas" + Main.ANSI_RESET);
             System.out.println("Escolha abaixo uma opcao para listar as Pessoas cadastradas no sistema: ");
             System.out.println("1 - Listar Alunos");
             System.out.println("2 - Listar Professores");
@@ -33,32 +30,31 @@ public class PessoaRepository {
 
             int opcao = Integer.parseInt(scanner.nextLine());
 
+            System.out.println(Main.ANSI_MAGENTA);
             if(opcao == 1) {
-                System.out.println("\nListando Alunos:");
+                System.out.println("LISTANDO ALUNOS:");
                 for (Pessoa pessoa : pessoas) if(pessoa instanceof Aluno) System.out.println(pessoa);
             } else if(opcao == 2) {
-                System.out.println("\nListando Professores:");
+                System.out.println("LISTANDO PROFESSORES:");
                 for (Pessoa pessoa : pessoas) if(pessoa instanceof Professor) System.out.println(pessoa);
             } else if(opcao == 3) {
-                System.out.println("\nListando Pedagogos:");
+                System.out.println("LISTANDO PEDAGOGOS:");
                 for (Pessoa pessoa : pessoas) if(pessoa instanceof Pedagogo) System.out.println(pessoa);
             } else if(opcao == 4) {
-                System.out.println("\nListando todas as Pessoas:");
+                System.out.println("LISTANDO TODAS AS PESSOAS:");
                 for (Pessoa pessoa : PessoaRepository.getPessoas()) System.out.println(pessoa);
-            } else throw new OpcaoInvalidaException();
+            } else {
+                System.out.println(Main.ANSI_RESET);
+                throw new OpcaoInvalidaException();
+            }
+            System.out.println(Main.ANSI_RESET);
         }
+
+        System.out.println("\nPressione ENTER para prosseguir...");
+        scanner.nextLine();
     }
 
     public static List<Pessoa> getPessoas() {
         return pessoas;
-    }
-    public static void setPessoas(List<Pessoa> pessoas) {
-        PessoaRepository.pessoas = pessoas;
-    }
-
-    @Override
-    public String toString() {
-        System.out.println("Lab School > 6 - Lista pessoas");
-        return "PessoaRepository []";
     }
 }

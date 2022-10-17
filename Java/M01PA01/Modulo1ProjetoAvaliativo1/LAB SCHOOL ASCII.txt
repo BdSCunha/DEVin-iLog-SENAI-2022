@@ -85,3 +85,17 @@ CALVIN S
 ║  ╠═╣╠╩╗  ╚═╗║  ╠═╣║ ║║ ║║  
 ╩═╝╩ ╩╚═╝  ╚═╝╚═╝╩ ╩╚═╝╚═╝╩═╝
 
+popularLista();
+    public static void popularLista() {
+        PessoaRepository.adicionarPessoa(new Aluno("Emily Santos Castro", 2777995249L, LocalDate.of(1947, 8, 27), 67542338854L, Aluno.StatusMatriculaAluno.ATENDIMENTO_PEDAGOGICO, 8, 1));
+        PessoaRepository.adicionarPessoa(new Aluno("Kaua Lima Dias", 4439843886L, LocalDate.of(1953, 2, 21), 83148347501L, Aluno.StatusMatriculaAluno.ATENDIMENTO_PEDAGOGICO, 8, 1));
+        PessoaRepository.adicionarPessoa(new Aluno("Renan Dias Cunha", 1459357247L, LocalDate.of(2001, 7, 22), 31937410943L, Aluno.StatusMatriculaAluno.ATENDIMENTO_PEDAGOGICO, 8, 1));
+        
+        PessoaRepository.adicionarPessoa(new Professor("Sebastian Wexler", 8676157705L, LocalDate.of(1985, 10, 20), 18489100454L, Professor.FormacaoProfessor.MESTRADO, Professor.ExperienciaProfessor.FULL_STACK, Professor.StatusProfessor.ATIVO));
+        PessoaRepository.adicionarPessoa(new Professor("Christian Capon", 6986336409L, LocalDate.of(1972, 5, 5), 49413320918L, Professor.FormacaoProfessor.GRADUACAO_COMPLETA, Professor.ExperienciaProfessor.BACK_END, Professor.StatusProfessor.ATIVO));
+        PessoaRepository.adicionarPessoa(new Professor("Yuan Ho", 4239925636L, LocalDate.of(1962, 2, 1), 69772273705L, Professor.FormacaoProfessor.DOUTORADO, Professor.ExperienciaProfessor.FRONT_END, Professor.StatusProfessor.INATIVO));
+
+        PessoaRepository.adicionarPessoa(new Pedagogo("Melissa Oliveira Martins", 2288652963L, LocalDate.of(1968, 4, 7), 63773741278L));
+        PessoaRepository.adicionarPessoa(new Pedagogo("Erick Lima Ferreira", 1958637313L, LocalDate.of(2003, 9, 22), 91944944443L));
+        PessoaRepository.adicionarPessoa(new Pedagogo("Douglas Ribeiro Dias", 6261612436L, LocalDate.of(1958, 12, 8), 43367098744L));
+    }

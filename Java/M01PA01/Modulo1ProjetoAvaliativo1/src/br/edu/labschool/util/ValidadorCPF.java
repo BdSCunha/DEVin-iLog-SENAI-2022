@@ -1,11 +1,7 @@
-package br.edu.labschool.resources;
+package br.edu.labschool.util;
 
 // Borrowed from: https://www.vivaolinux.com.br/script/Codigo-para-validar-CPF-e-CNPJ-otimizado
 public class ValidadorCPF {
-    public static void main(String[] args) {
-        System.out.println(isValidCPF("63773741278"));
-    }
-
     private static final int[] pesoCPF = {11, 10, 9, 8, 7, 6, 5, 4, 3, 2};
 
     private static int calcularDigito(String str, int[] peso) {

@@ -5,8 +5,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 import br.edu.labschool.Main;
+import br.edu.labschool.exception.CPFInvalidoException;
 import br.edu.labschool.exception.OpcaoInvalidaException;
 import br.edu.labschool.repository.PessoaRepository;
+import br.edu.labschool.util.ValidadorCPF;
 
 public class Professor extends Pessoa {
     private FormacaoProfessor formacaoProfessor;
@@ -44,15 +46,18 @@ public class Professor extends Pessoa {
 
         System.out.print("Digite o Nome do Professor: ");
         String nome = scanner.nextLine();
+        if(nome.isEmpty()) throw new IllegalArgumentException("O nome nao pode ser vazio!");
 
         System.out.print("Digite o telefone do Professor (10 ou 11 algarismos, DDD + numero, sem o 0 inicial): ");
         Long telefone = Long.parseLong(scanner.nextLine());
+        if(telefone < 1000000000L || telefone > 99999999999L) throw new IllegalArgumentException("O telefone deve ter 10 ou 11 algarismos!");
 
         System.out.print("Digite a Data de nascimento do Professor (DD/MM/AAAA): ");
         LocalDate dataNascimento = LocalDate.parse(scanner.nextLine(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
         System.out.print("Digite o CPF do Professor (11 algarismos, sem pontos ou hifen): ");
         Long cpf = Long.parseLong(scanner.nextLine());
+        if(!ValidadorCPF.isValidCPF(cpf.toString())) throw new CPFInvalidoException();
 
         // FORMACAO PROFESSOR
         System.out.println("Escolha abaixo uma opcao de formacao do Professor: ");
@@ -90,7 +95,7 @@ public class Professor extends Pessoa {
 
         PessoaRepository.adicionarPessoa(professor);
 
-        System.out.printf("\n%s cadastrado com sucesso!\n", professor.toString());
+        System.out.printf(Main.ANSI_YELLOW + "\n%s cadastrado com sucesso!\n" + Main.ANSI_RESET, professor.toString());
 
         System.out.println("\nPressione ENTER para prosseguir...");
         scanner.nextLine();
@@ -115,14 +120,23 @@ public class Professor extends Pessoa {
         else if(opcao == 4);
         else throw new OpcaoInvalidaException();
 
-        System.out.println("\nPROFESSORES: ");
+        int contador = 0;
+        System.out.println(Main.ANSI_MAGENTA + "\nRELATORIO DE PROFESSORES: ");
         for(Pessoa pessoa : PessoaRepository.getPessoas()) {
             if(pessoa instanceof Professor) {
                 if(((Professor)pessoa).getExperienciaProfessor().equals(experienciaProfessor) || opcao == 4) {
                     System.out.println("Id: " + pessoa.getId() + ", nome: " + pessoa.getNome() + ", formacaoProfessor: " + ((Professor)pessoa).getFormacaoProfessor() + ", experienciaProfessor: " + ((Professor)pessoa).getExperienciaProfessor() + ", statusProfessor: " + ((Professor)pessoa).getStatusProfessor());
+
+                    contador++;
                 }
             }
         }
+        System.out.println(Main.ANSI_RESET);
+
+        if(contador == 0) System.out.printf(Main.ANSI_RED + "Nao ha nenhum Professor cadastrado com o nivel de experiencia selecionado: %s.\n" + Main.ANSI_RESET, experienciaProfessor);
+
+        System.out.println("\nPressione ENTER para prosseguir...");
+        scanner.nextLine();
     }
 
     public FormacaoProfessor getFormacaoProfessor() {
