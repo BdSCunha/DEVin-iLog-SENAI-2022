@@ -61,7 +61,7 @@ SELECT sigla FROM times WHERE nome = 'Gana';
 
 
 #############################################################################################################
-# [M01S08] Ex 03 - Copa do Mundo (parte 3) - Novas Consulta de times6
+# [M01S08] Ex 03 - Copa do Mundo (parte 3) - Novas Consulta de times
 
 # a) Consultar todos os campos dos times cujo nome começa com 'E'.
 SELECT sigla, nome FROM times WHERE nome LIKE 'E%';
@@ -77,18 +77,6 @@ SELECT sigla, nome FROM times WHERE nome LIKE 'E%' AND sigla LIKE 'U%';
 ALTER TABLE IF EXISTS times ADD COLUMN IF NOT EXISTS grupo VARCHAR(1) NOT NULL;
 
 # b) Atualizar cada registro com o respectivo grupo em que faz parte, conforme listagem abaixo.
-/*
-GRUPO - TIMES
--------------
-A - Qatar, Equador, Senegal, Holanda
-B - Inglaterra, Irã, Estados Unidos, País de Gales
-C - Argentina, Arábia Saudita, México, Polônia
-D - França, Dinamarca, Tunísia, Austrália
-E - Espanha, Alemanha, Japão, Costa Rica
-F - Bélgica, Canadá, Marrocos, Croácia
-G - Brasil, Sérvia, Suiça, Camarões
-H - Portugal, Gana, Uruguai, Coréia do Sul
-*/
 UPDATE times SET grupo = 'A' WHERE nome IN ('Qatar', 'Equador', 'Senegal', 'Holanda');
 UPDATE times SET grupo = 'B' WHERE nome IN ('Inglaterra', 'Irã', 'Estados Unidos', 'País de Gales');
 UPDATE times SET grupo = 'C' WHERE nome IN ('Argentina', 'Arábia Saudita', 'México', 'Polônia');
@@ -127,7 +115,7 @@ SELECT * FROM times WHERE grupo IN ('E', 'H') ORDER BY nome;
 
 # a) Criar a tabela _CAMPEOES_ com os campos ano (int e primary key) e sigla_time (foreign key da tab de times).
 CREATE TABLE IF NOT EXISTS campeoes (
-	ano INT(4) UNSIGNED PRIMARY KEY,
+	ano INT UNSIGNED PRIMARY KEY,
 	sigla_time VARCHAR(3),
 	CONSTRAINT fk_sigla_time FOREIGN KEY (sigla_time) REFERENCES times(sigla)
 );
@@ -183,7 +171,7 @@ SELECT grupo, COUNT(*) AS 'Qtd. de times' FROM times GROUP BY grupo ORDER BY gru
 # [M01S08] Ex 10 - Copa do Mundo (parte 10) - Novas Consultas de Times e Campeões
 
 # a) Consultar os nomes em maiúsculo dos times que estão dispuntando a copa atual é que já ganharam algum título de campeão da Copa do Mundo, sem repetir o nome do time (dica: usar JOIN e DISTINCT)
-SELECT UPPER(nome) AS 'Nome' FROM times;
+SELECT DISTINCT(UPPER(nome)) AS 'SELEÇÃO' FROM times INNER JOIN campeoes ON times.sigla = campeoes.sigla_time;
 
-# b) Consultar os nomes em minúsculo dos times que estão dispuntando a copa atual é que nunca ganharam um título de campeão da Copa do Mundo, sem repetir o nome do time (dica: usar JOIN e DISTINCT)
-
+# b) Consultar os nomes em minúsculo dos times que estão dispuntando a copa atual e que nunca ganharam um título de campeão da Copa do Mundo, sem repetir o nome do time (dica: usar JOIN e DISTINCT)
+SELECT DISTINCT(LOWER(nome)) AS 'seleção' FROM times LEFT JOIN campeoes ON times.sigla = campeoes.sigla_time WHERE campeoes.sigla_time IS NULL;
