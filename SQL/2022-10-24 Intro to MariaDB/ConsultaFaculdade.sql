@@ -30,3 +30,12 @@ CREATE TABLE IF NOT EXISTS disciplinas(
 	PRIMARY KEY(coddisciplina),
 	CONSTRAINT fk_disciplinas_cursos FOREIGN KEY (codcurso) REFERENCES cursos(codcurso) ON DELETE CASCADE
 );
+
+CREATE DATABASE IF NOT EXISTS aula1;
+USE aula1;
+DROP TABLE pessoa;
+CREATE TABLE pessoa (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	nome VARCHAR(100),
+	doc_receita_federal VARCHAR(20)
+);
