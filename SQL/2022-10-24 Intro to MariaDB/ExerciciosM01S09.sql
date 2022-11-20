@@ -20,6 +20,11 @@ CREATE TABLE IF NOT EXISTS cliente (
 	cpf_cnpj VARCHAR(14) NOT NULL UNIQUE
 );
 
+INSERT INTO cliente (ativo, nome, cpf_cnpj)
+VALUES (TRUE, "Bruno Cunha", "12345678910");
+
+SELECT * FROM cliente;
+
 CREATE TABLE IF NOT EXISTS venda (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	data_venda DATETIME NOT NULL,
