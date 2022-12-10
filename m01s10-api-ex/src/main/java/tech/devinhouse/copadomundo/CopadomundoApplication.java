@@ -59,7 +59,6 @@ public class CopadomundoApplication {
 				usuarioService.criar(new Usuario(null, "mccoy@enterprise.com", "abcd", LocalDate.now().minusYears(20), Arrays.asList(Papel.MANTENEDOR_TIMES)));
 			}
 		};
-
 	}
 
 }

@@ -1,21 +1,20 @@
 package br.org.sesisenai.estudante.labschoolrestapi.dtos;
 
-import br.org.sesisenai.estudante.labschoolrestapi.models.Pessoa;
+import br.org.sesisenai.estudante.labschoolrestapi.enums.Situacao;
 import jakarta.validation.constraints.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.hibernate.validator.constraints.Range;
 
 import java.time.LocalDate;
 
 @Data
-public class AlunoDTO {
-    @NotBlank @NotNull @NotEmpty
+public class AlunoDto {
+    @NotEmpty @NotBlank @NotNull
     @Size(max = 200)
     private String nome;
 
-    @NotBlank @NotNull @NotEmpty
-    @Size(max = 13)
+    @NotEmpty @NotBlank @NotNull
+    @Size(min = 12, max = 13)
     private String telefone;
 
     @NotNull
@@ -25,10 +24,13 @@ public class AlunoDTO {
     @NotNull
     private Long cpf;
 
-    private Pessoa.EstadoAluno estadoAluno;
+    @NotNull
+    private Situacao situacao;
 
+    @NotNull
     @Range(min = 0, max = 10)
     private Double nota;
 
-    private Integer atendimentosPedagogicos;
+    @NotNull
+    private Integer atendimentos = 0;
 }

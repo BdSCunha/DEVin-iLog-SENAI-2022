@@ -1,6 +1,5 @@
 package br.org.sesisenai.estudante.labschoolrestapi.controllers;
 
-import br.org.sesisenai.estudante.labschoolrestapi.dtos.AlunoDTO;
 import br.org.sesisenai.estudante.labschoolrestapi.models.Pessoa;
 import br.org.sesisenai.estudante.labschoolrestapi.services.PessoaService;
 import jakarta.validation.Valid;
@@ -18,6 +17,13 @@ import java.util.Optional;
 @AllArgsConstructor
 public class PessoaController {
     private PessoaService pessoaService;
+
+//    @PostMapping
+//    public ResponseEntity<Pessoa> save(@RequestBody @Valid AlunoDTO alunoDTO) {
+//        Pessoa pessoa = new Pessoa();
+//        BeanUtils.copyProperties(alunoDTO, pessoa);
+//        return ResponseEntity.status(HttpStatus.CREATED).body(pessoaService.save(pessoa));
+//    }
 
     @GetMapping
     public List<Pessoa> findAll() {
