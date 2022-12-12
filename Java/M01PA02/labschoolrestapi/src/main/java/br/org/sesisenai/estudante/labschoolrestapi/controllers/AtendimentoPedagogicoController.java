@@ -36,14 +36,6 @@ public class AtendimentoPedagogicoController {
         if (pedagogoService.findPedagogoByCodigo(codigoPedagogo).isEmpty()) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Pedagogo não encontrado / inexistente.");
         var pedagogo = pedagogoService.findPedagogoByCodigo(codigoPedagogo).get();
 
-        atendimentoPedagogicoService.atendimentoPedagogico(aluno, pedagogo);
-//        aluno.setAtendimentos(aluno.getAtendimentos() + 1);
-//        aluno.setSituacao(Situacao.ATENDIMENTO_PEDAGOGICO);
-//        alunoService.save(aluno);
-//
-//        pedagogo.setAtendimentos(pedagogo.getAtendimentos() + 1);
-//        pedagogoService.save(pedagogo);
-
-        return ResponseEntity.status(HttpStatus.OK).body(new AtendimentoPedagogicoResponse(aluno, pedagogo));
+        return ResponseEntity.status(HttpStatus.OK).body(atendimentoPedagogicoService.atendimentoPedagogico(aluno, pedagogo));
     }
 }
