@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+main section {
+    display: flex;
+    justify-content: space-between;
+}
+
+main section div {
+    width: 400px;
+    height: 400px;
+    margin: 2em;
+}
+
+#jericoacoara {
+    background-image: url(../img/jericoacoara.jpeg);
+    background-size: cover;
+}
+
+#noronha {
+    background-image: url(../img/fernando-de-noronha.jpg);
+    background-size: cover;
+}
+
+#paraty {
+    background-image: url(../img/paraty.webp);
+    background-size: cover;
+}
+
+#info ul li {
+    display: inline-flex;
+    padding: 0 1em;
+}
+
+#info ul li img {
+    margin-right: 1em;
+}

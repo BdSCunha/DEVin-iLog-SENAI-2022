@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Formulário de Cadastro</h1>
+    </header>
+    <main>
+        <section class="container">
+            <fieldset>
+                <legend><strong>Informações pessoais:</strong></legend>
+                <form action="">
+                    <div>
+                        <input type="text" id="nome" name="nome" minlength="8" pattern="[a-zA-Z0-9 ]+*" required />
+                        <label for="nome">Nome:</label>
+                    </div>
+                    <div>
+                        <input type="date" id="data-nascimento" name="data-nascimento" required>
+                        <label for="data-nascimento">Data de Nascimento:</label>
+                    </div>
+                    <div>
+                        <input type="number" id="cpf" name="cpf" required />
+                        <label for="cpf">CPF:</label>
+                    </div>
+                    <div>
+                        <label for="municipio">Município:</label>
+                        <select name="municipio" id="municipio" required>
+                            <option label=""></option>
+                            <optgroup label="São Paulo">
+                                <option value="sao-paulo">São Paulo</option>
+                                <option value="guarulhos">Guarulhos</option>
+                                <option value="campinas">Campinas</option>
+                                <option value="sao-bernardo-do-campo">São Bernardo do Campo</option>
+                                <option value="sao-josé-dos-campos">São José dos Campos</option>
+                            </optgroup>
+                            <optgroup label="Rio de Janeiro">
+                                <option value="rio-de-janeiro">Rio de Janeiro</option>
+                                <option value="sao-goncalo">São Gonçalo</option>
+                                <option value="duque-de-caxias">Duque de Caxias</option>
+                                <option value="nova-iguacu">Nova Iguaçú</option>
+                                <option value="niteroi">Niterói</option>
+                            </optgroup>
+                            <optgroup label="Minas Gerais">
+                                <option value="belo-horizonte">Belo Horizonte</option>
+                                <option value="uberlandia">Uberlândia</option>
+                                <option value="contagem">Contagem</option>
+                                <option value="juiz-de-fora">Juiz de Fora</option>
+                                <option value="betim">Betim</option>
+                            </optgroup>
+                            <optgroup label="Espírito Santo">
+                                <option value="serra">Serra</option>
+                                <option value="vila-velha">Vila Velha</option>
+                                <option value="cariacica">Cariacica</option>
+                                <option value="vitoria">Vitória</option>
+                                <option value="cachoeiro-de-itapemirim">Cachoeiro de Itapemirim</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <input type="submit" id="submit" name="submit">
+                </form>
+            </fieldset>
+        </section>
+    </main>
+</body>
+</html>
