@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex 06 - Operadores logicos e condicao</title>
+</head>
+<body>
+    <main>
+        <div id="imc"></div>
+    </main>
+
+    <script>
+        let peso
+        do {
+            peso = prompt("Digite o peso [kg]:")
+        } while (isNaN(parseFloat(peso)))
+        peso = parseFloat(peso.replace(",", "."))
+
+        let altura
+        do {
+            altura = prompt("Digite a altura [m]:")
+        } while (isNaN(parseFloat(altura)))
+        altura = parseFloat(altura.replace(",", "."))
+
+        const imc = peso/(altura*altura)
+
+        if(imc >= 25) {
+            alert("Você está acima do peso, procure um médico")
+        } else if (imc >= 18.5 && imc < 25) {
+            alert("PARABÉNS!! Você está no peso ideal")
+        } else {
+            alert("Você está abaixo do peso, procure um médico.")
+        }
+
+        const imcDiv = document.getElementById("imc")
+        imcDiv.innerHTML = `O IMC para o peso ${peso}kg e altura ${altura}m é <strong>${imc.toFixed(2)}</strong>`.replaceAll(".", ",")
+    </script>
+</body>
+</html>

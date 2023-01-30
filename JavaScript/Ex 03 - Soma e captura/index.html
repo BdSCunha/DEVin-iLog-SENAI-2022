@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex 03 - Soma e captura</title>
+</head>
+<body>
+    <main>
+        <div id="soma"></div>
+    </main>
+
+    <script>
+        let n1 = parseFloat(prompt("Digite um número: "))
+        while (isNaN(n1)) {
+            n1 = parseFloat(prompt("Entrada inválida! Digite um número: "))
+        }
+
+        let  n2 = parseFloat(prompt("Digite outro número: "))
+        while (isNaN(n2)) {
+            n2 = parseFloat(prompt("Entrada inválida! Digite outro número: "))
+        }
+
+        const soma = n1 + n2
+
+        const somaDiv = document.getElementById("soma")
+        somaDiv.innerHTML = `A soma entre ${n1} e ${n2} é <strong>${soma}</strong>`
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex 02 - Prompt document write</title>
+</head>
+<body>
+    <main>
+        <h4 id="nome"></h4>
+        <h4 id="email"></h4>
+    </main>
+
+    <script>
+        // https://developer.mozilla.org/en-US/docs/Web/API/Document/write
+        // Warning: Use of the document.write() method is strongly discouraged, because
+        // it can overwrite the entire document, even after the page has finished loading
+
+        const nome = prompt("Qual o seu nome?")
+        const nomeDiv = document.getElementById("nome")
+        nomeDiv.innerHTML = (!nome || nome.trim().length === 0) ? "Nome não informado!" : `Seu nome é ${nome}.`
+
+        const email = prompt("Qual o seu email?")
+        const emailDiv = document.getElementById("email")
+        emailDiv.innerHTML = (!email || email.trim().length === 0) ? `Email não informado!` : `Seu email é ${email}.`
+    </script>
+</body>
+</html>

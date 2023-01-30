@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex 09 - Revisando a semana</title>
+</head>
+<body>
+    <script>
+        let quantidadeProduto = {}
+        while (true) {
+            let opcao = parseInt(prompt("Selecione um produto: (1) Hortifruti, (2) Laticínios, (3) Carnes, (4) Peixes, (5) Aves ou (6) Fechar pedido"))
+            if (opcao > 6 || isNaN(opcao)) {
+                alert("Opção inválida! Favor selecionar uma opção de 1 a 6.")
+                continue
+            } else if (opcao === 6) {
+                alert("Encerrando aplicação!")
+                break
+            }
+
+            let quantidade = parseInt(prompt("Quantidade de itens"))
+            if (isNaN(quantidade)) {
+                alert("Quantidade inválida! Favor digitar uma quantidade válida.")
+                continue
+            } else {
+                if (quantidadeProduto[opcao]) {
+                    quantidadeProduto[opcao] += quantidade;
+                } else {
+                    quantidadeProduto[opcao] = quantidade;
+                }
+            }
+        }
+
+        let produtoMaisComprado = []
+        let qtdMax = 0
+        for (let opcao in quantidadeProduto) {
+            if (quantidadeProduto[opcao] > qtdMax) {
+                qtdMax = quantidadeProduto[opcao]
+                produtoMaisComprado = [opcao]
+            } else if (quantidadeProduto[opcao] == qtdMax) {
+                produtoMaisComprado.push(opcao)
+            }
+        }
+        console.log("Produto(s) mais comprado(s):", produtoMaisComprado)
+    </script>
+</body>
+</html>

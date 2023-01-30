@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex 07 - While</title>
+</head>
+<body>
+    <main>
+
+    </main>
+
+    <script>
+        let countBad = 0
+        let i = 1
+        while (i <= 4) {
+            let rating
+            do  {
+                rating = prompt(`Usuário ${i}, qual a sua avaliação para a série Stranger Things? (ruim, boa, excelente)`)
+            } while (!rating || rating.trim().length === 0)
+            rating = rating.toLowerCase()
+
+            if (rating === "ruim") {
+                countBad++
+            } else if (rating !== "boa" && rating !== "excelente") {
+                alert("Avaliação inválida! Favor avaliar como 'ruim', 'boa', ou 'excelente'!")
+                continue
+            }
+            i++
+        }
+
+        alert(`${countBad} de 4 usuários classificaram a série Stranger Things como "ruim"`)
+    </script>
+</body>
+</html>

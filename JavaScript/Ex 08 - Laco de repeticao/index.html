@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex 08 - Laço de repetição</title>
+</head>
+<body>
+    <main>
+        <div id="output"></div>
+    </main>
+
+    <script>
+        let result = `<table><tr><th colspan="5">Tabuada do 5</th></tr>`
+        for (let i = 0; i <= 10; i++) {
+            result += `<tr><td>5</td><td>x</td><td>${i}</td><td>=</td><td>${5 * i}</td></tr>`;
+        }
+        result += "</table>";
+        document.getElementById("output").innerHTML = result;
+
+    </script>
+</body>
+</html>
