@@ -1,0 +1,26 @@
+main {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+h1 {
+    text-decoration: underline;
+}
+
+.container {
+    width: 100%;
+    background-color: #AAA;
+}
+
+.text {
+    text-align: right;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+}
+
+.counter {
+    width: 100%;
+    background-color: #04aa6d;
+}

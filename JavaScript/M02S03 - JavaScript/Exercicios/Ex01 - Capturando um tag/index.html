@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex01 - Capturando um tag</title>
+    <style>
+        main {
+            text-align: center;
+        }
+
+        h1 {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Ex01 - Capturando um tag</h1>
+        <div>
+            <label for="input-txt-box">Caixa de texto: </label>
+            <input type="text" value="Caixa de texto" id="input-txt-box" placeholder="Caixa de texto">
+        </div>
+    </main>
+
+    <script>
+        const inputTxtBox = document.getElementById("input-txt-box")
+        console.log(inputTxtBox.value)
+    </script>
+</body>
+</html>

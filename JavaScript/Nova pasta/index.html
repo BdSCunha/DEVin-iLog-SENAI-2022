@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM - Document Object Model</title>
+    <!-- <script defer></script> -->
+</head>
+<body>
+    <header>
+        <h1>DOM - Document Object Model</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>DOM vs BOM</h2>
+            <div>
+                <p>The <strong>DOM</strong> <em>(Document Object Model)</em> and <strong>BOM</strong> <em>(Browser Object Model)</em> are two different technologies used in web development.</p>
+
+                <p>The <strong>DOM</strong> represents the structure of an HTML or XML document as a tree-like hierarchy of nodes and elements, and provides a way to manipulate, access, and update the content and structure of a web page. The DOM is language-independent and can be used with any programming language.</p>
+
+                <p>On the other hand, the <strong>BOM</strong> represents the objects and properties of the browser window, and provides a way to interact with the browser window and the user's environment. It includes properties such as window, screen, and history, as well as methods for working with browser-level events such as opening new windows, changing the URL, and setting timeouts and intervals.</p>
+
+                <p>In summary, the DOM provides a way to interact with the content and structure of a web page, while the BOM provides a way to interact with the browser window and user environment.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>The &lt;script&gt; tag</h2>
+            <div>
+                <p>It's recommended to place the <strong>&lt;script&gt;</strong> tags either at the bottom of the HTML document or use the <strong>&lt;script <em>defer</em>&gt;&lt;/script&gt;</strong> attribute to indicate that the script should be executed after the page has finished loading.</p>
+
+                <p>This approach improves the loading performance of the page, as the browser can continue parsing the HTML and displaying content to the user while the scripts are still loading.</p>
+
+                <p>If the script is placed in the head of the HTML document or without the defer attribute, the browser will block page rendering until it has finished executing the script, leading to slower page load times.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Get HTML elements</h2>
+
+            <div>
+                <p>&#8226; <strong>Get elements by id:</strong></p>
+                    <pre>const element = document.getElementById("intro")</pre>
+                <p>&#8226; <strong>Get elements by tag name:</strong></p>
+                    <pre>const element = document.getElementsByTagName("p")[0]</pre>
+                <p>&#8226; <strong>Get elements by class name:</strong></p>
+                    <pre>const element = document.getElementsByClassName("intro")</pre>
+                <p>&#8226; <strong>Get elements by CSS selectors:</strong></p>
+                    <pre>const element = document.querySelectorAll("p.intro")</pre>
+            </div>
+        </section>
+
+        <section>
+            <div>
+                <h2>Query Selector</h2>
+
+                <p>The Document method <strong>querySelector()</strong> returns the first Element within the document that matches the specified selector, or group of selectors.</p>
+
+                <p>If the specified selector matches an ID that is incorrectly used more than once in the document, the first element with that ID is returned.</p>
+
+                <p>If no matches are found, <strong>null</strong> is returned.</p>
+
+                <p>&#8226; Sintax:</p>
+                <pre>querySelector(selectors)</pre>
+                <p>Where <em>selectors</em> is a string containing one or more selectors to match.</p>
+
+                <p>This string must be a valid CSS selector string; if it isn't, a <em>SyntaxError</em> exception is thrown.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Query Selector All</h2>
+            <div>
+                <p>The Document method querySelectorAll() returns a static (not live) NodeList representing a list of the document's elements that match the specified group of selectors.</p>
+
+                <p>If no matches are found, an <strong>empty NodeList</strong> is returned.</p>
+
+                <p>The selector must be a string containing one or more selectors to match against.</p>
+
+                <p>This string must be a valid CSS selector string; if it's not, a SyntaxError exception is thrown.</p>
+
+                <p>&#8226; <strong>Note:</strong> The NodeList returned by querySelectorAll() <strong>is not live</strong>, which means that changes in the DOM are not reflected in the collection. This is different from other DOM querying methods that return live node lists.</p>
+            </div>
+        </section>
+    </main>
+</body>
+<script src="script.js"></script>
+</html>

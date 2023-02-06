@@ -1,0 +1,23 @@
+/* * {
+    border: 1px solid red;
+} */
+
+main {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+section {
+    margin: 1em;
+}
+
+h1 {
+    text-decoration: underline;
+    text-align: center;
+}
+
+form {
+    text-align: center;
+    margin: 1em;
+}
